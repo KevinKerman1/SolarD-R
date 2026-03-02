@@ -14,20 +14,20 @@
     <meta property="og:description" content="Phoenix's trusted solar panel detach and reset specialists. Safely removing and reinstalling solar panels for roof replacements across Maricopa County. ROC #331356.">
     <meta property="og:url" content="https://solardetachpro.com/">
     <meta property="og:site_name" content="Solar Detach & Reset">
-    <meta property="og:image" content="https://solardetachpro.com/wp-content/uploads/2020/09/DetachResetLogoWHITEoutline.png">
+    <meta property="og:image" content="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4da1495735c5df5478fa9.png">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" href="https://solardetachpro.com/wp-content/uploads/2020/09/cropped-DetachResetLogoWHITEoutline-32x32.png" sizes="32x32">
-    <link rel="apple-touch-icon" href="https://solardetachpro.com/wp-content/uploads/2020/09/cropped-DetachResetLogoWHITEoutline-180x180.png">
+    <link rel="icon" href="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4da1495735c5df5478fa9.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4da1495735c5df5478fa9.png">
 
     <!-- PERF: Preconnect to critical third-party origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://connect.facebook.net">
-    <link rel="dns-prefetch" href="https://solardetachpro.com">
+    <link rel="preconnect" href="https://assets.cdn.filesafe.space">
 
     <!-- PERF: Preload hero background image (LCP element) -->
-    <link rel="preload" as="image" href="https://solardetachpro.com/wp-content/uploads/2023/07/Image-8.jpeg" fetchpriority="high">
+    <link rel="preload" as="image" href="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d582753f150e53734be4.png" fetchpriority="high">
 
     <!-- PERF: Load Google Fonts non-render-blocking with font-display:swap -->
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=DM+Sans:wght@400;500&display=swap">
@@ -68,7 +68,7 @@
             "bestRating": "5"
         },
         "priceRange": "$$",
-        "image": "https://solardetachpro.com/wp-content/uploads/2020/09/DetachResetLogoWHITEoutline.png",
+        "image": "https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4da1495735c5df5478fa9.png",
         "sameAs": [
             "https://www.google.com/maps/place/Solar+Detach+%26+Reset/@33.8023262,-112.079145,15z/"
         ],
@@ -102,7 +102,6 @@
            CRITICAL CSS — INLINE FOR FAST FIRST PAINT
            ============================================ */
 
-        /* PERF: System font fallback stack to prevent FOIT/FOUT */
         :root {
             --orange: #F57B20;
             --orange-dark: #D96A15;
@@ -235,8 +234,13 @@
             padding: 14px 0;
         }
 
-        /* PERF: Explicit logo dimensions to prevent CLS */
-        .logo img { height: 56px; width: auto; aspect-ratio: 160/124; }
+        /* Logo with GPU compositing fix for Safari */
+        .logo {
+            display: inline-flex;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+        .logo img { height: 56px; width: auto; }
 
         .nav-links {
             display: flex;
@@ -290,7 +294,6 @@
             align-items: center;
             background: var(--charcoal);
             overflow: hidden;
-            /* PERF: contain paint to limit repaint scope */
             contain: layout style;
         }
 
@@ -300,7 +303,7 @@
             inset: 0;
             background:
                 linear-gradient(135deg, rgba(13,13,13,0.95) 0%, rgba(26,26,46,0.85) 40%, rgba(245,123,32,0.15) 100%),
-                url('https://solardetachpro.com/wp-content/uploads/2023/07/Image-8.jpeg') center/cover no-repeat;
+                url('https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d582753f150e53734be4.png') center/cover no-repeat;
             z-index: 0;
         }
 
@@ -567,7 +570,6 @@
             box-shadow: var(--shadow-md);
             transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
             border: 1px solid var(--gray-100);
-            /* PERF: promote to compositor layer for smooth animations */
             will-change: transform;
         }
         .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-xl); border-color: var(--orange); }
@@ -640,9 +642,15 @@
         /* PARTNERS */
         .partners-inner { text-align: center; }
         .partners-inner h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); margin-bottom: 40px; }
-        .partners-logos { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
-        .partners-logos img { max-height: 72px; width: auto; opacity: 0.7; transition: opacity 0.3s; filter: grayscale(40%); }
-        .partners-logos img:hover { opacity: 1; filter: none; }
+        .partners-badges { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+        .partner-badge {
+            display: flex; align-items: center; gap: 12px;
+            padding: 16px 28px; background: var(--white);
+            border-radius: var(--radius-md); box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-100);
+            font-family: var(--font-heading); font-weight: 700; font-size: 15px; color: var(--charcoal);
+        }
+        .partner-badge svg { color: var(--orange); flex-shrink: 0; }
 
         /* CTA / CONTACT */
         .cta-section { position: relative; overflow: hidden; contain: layout style; }
@@ -652,7 +660,7 @@
             inset: 0;
             background:
                 linear-gradient(135deg, var(--charcoal) 0%, rgba(26,26,46,0.9) 60%, rgba(245,123,32,0.2) 100%),
-                url('https://solardetachpro.com/wp-content/uploads/2023/07/Solar-Restore-AZ-Header1-1024x576-1.jpeg') center/cover no-repeat;
+                url('https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d582b617a7abb6524809.png') center/cover no-repeat;
         }
         .cta-inner {
             position: relative; z-index: 1;
@@ -787,7 +795,7 @@
     <div class="container">
         <div class="header-inner">
             <a href="/" class="logo">
-                <img src="https://solardetachpro.com/wp-content/uploads/2020/09/DetachResetLogoWHITEoutline.png" alt="Solar Detach & Reset Logo" width="160" height="124">
+                <img src="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4da1495735c5df5478fa9.png" alt="Solar Detach & Reset Logo" width="56" height="56">
             </a>
             <nav>
                 <ul class="nav-links">
@@ -935,7 +943,7 @@
     <div class="container">
         <div class="about-grid">
             <div class="about-image-wrap">
-                <img src="https://solardetachpro.com/wp-content/uploads/2023/08/IMG_3476-1.jpeg" alt="Solar panel detach and reset crew working on a tile roof in Arizona" width="560" height="480" loading="lazy" decoding="async">
+                <img src="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d582753f1581bf734be1.png" alt="Solar Detach & Reset crew reviewing project checklist before a job" width="1024" height="1024" loading="lazy" decoding="async">
                 <div class="about-image-accent"><strong>5yr</strong><span>Workmanship<br>Warranty</span></div>
             </div>
             <div class="about-content">
@@ -966,7 +974,7 @@
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-card-img">
-                    <img src="https://solardetachpro.com/wp-content/uploads/2023/07/Image-8-1024x576-1.jpeg" alt="Solar panels being carefully detached from a roof in Phoenix AZ" width="560" height="240" loading="lazy" decoding="async">
+                    <img src="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d593b617a707ef524a66.png" alt="Solar panel being carefully detached from a tile roof by a technician" width="1024" height="1024" loading="lazy" decoding="async">
                 </div>
                 <div class="service-card-body">
                     <h3>Solar Detach &amp; Reset</h3>
@@ -976,7 +984,7 @@
             </div>
             <div class="service-card">
                 <div class="service-card-img">
-                    <img src="https://solardetachpro.com/wp-content/uploads/2023/07/Image-9-1024x576-1.jpeg" alt="Solar panel inspection and performance check in Arizona" width="560" height="240" loading="lazy" decoding="async">
+                    <img src="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d582b617a72ee5524807.png" alt="Technician inspecting solar panel wiring and connectors on a roof" width="1024" height="1024" loading="lazy" decoding="async">
                 </div>
                 <div class="service-card-body">
                     <h3>Solar Panel Inspection</h3>
@@ -1043,14 +1051,14 @@
             <h2 style="margin-top:12px;">Project Gallery</h2>
         </div>
         <div class="gallery-grid">
-            <a href="https://solardetachpro.com/wp-content/uploads/2023/07/Image-1024x576-1.jpeg" target="_blank"><img src="https://solardetachpro.com/wp-content/uploads/2023/07/Image-1024x576-1.jpeg" alt="Solar panel detach project in Phoenix" width="1024" height="576" loading="lazy" decoding="async"></a>
-            <a href="https://solardetachpro.com/wp-content/uploads/2023/07/Image-4-1024x576-1-1.jpeg" target="_blank"><img src="https://solardetachpro.com/wp-content/uploads/2023/07/Image-4-1024x576-1-1.jpeg" alt="Solar panels removed for roof work" width="1024" height="576" loading="lazy" decoding="async"></a>
-            <a href="https://solardetachpro.com/wp-content/uploads/2023/08/IMG_3763-1.jpeg" target="_blank"><img src="https://solardetachpro.com/wp-content/uploads/2023/08/IMG_3763-1.jpeg" alt="Solar reset completed on tile roof" width="1024" height="576" loading="lazy" decoding="async"></a>
-            <a href="https://solardetachpro.com/wp-content/uploads/2023/08/IMG_3476-1.jpeg" target="_blank"><img src="https://solardetachpro.com/wp-content/uploads/2023/08/IMG_3476-1.jpeg" alt="Professional solar panel reinstallation" width="1024" height="576" loading="lazy" decoding="async"></a>
-            <a href="https://solardetachpro.com/wp-content/uploads/2023/07/Image-8-1024x576-1.jpeg" target="_blank"><img src="https://solardetachpro.com/wp-content/uploads/2023/07/Image-8-1024x576-1.jpeg" alt="Solar array on Arizona roof" width="1024" height="576" loading="lazy" decoding="async"></a>
-            <a href="https://solardetachpro.com/wp-content/uploads/2023/07/Solar-Restore-AZ-Header1-1024x576-1.jpeg" target="_blank"><img src="https://solardetachpro.com/wp-content/uploads/2023/07/Solar-Restore-AZ-Header1-1024x576-1.jpeg" alt="Aerial view of solar panel installation" width="1024" height="576" loading="lazy" decoding="async"></a>
-            <a href="https://solardetachpro.com/wp-content/uploads/2023/08/20210902_070203-Copy.jpeg" target="_blank"><img src="https://solardetachpro.com/wp-content/uploads/2023/08/20210902_070203-Copy.jpeg" alt="Solar detach crew at work" width="1024" height="576" loading="lazy" decoding="async"></a>
-            <a href="https://solardetachpro.com/wp-content/uploads/2023/08/image000000-2.jpeg" target="_blank"><img src="https://solardetachpro.com/wp-content/uploads/2023/08/image000000-2.jpeg" alt="Completed solar panel reset project" width="1024" height="576" loading="lazy" decoding="async"></a>
+            <a href="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d582b617a76309524806.png" target="_blank"><img src="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d582b617a76309524806.png" alt="Crew installing solar panel on tile roof with team in background" width="1024" height="1024" loading="lazy" decoding="async"></a>
+            <a href="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d59395735c2b44456554.png" target="_blank"><img src="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d59395735c2b44456554.png" alt="Technician sealing roof mounts with stacked solar panels nearby" width="1024" height="1024" loading="lazy" decoding="async"></a>
+            <a href="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d582753f153bfb734be3.png" target="_blank"><img src="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d582753f153bfb734be3.png" alt="Two crew members carefully positioning solar panel on shingle roof" width="1024" height="1024" loading="lazy" decoding="async"></a>
+            <a href="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d582753f150e53734be4.png" target="_blank"><img src="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d582753f150e53734be4.png" alt="Aerial view of crew removing solar panels from residential roof" width="1024" height="1024" loading="lazy" decoding="async"></a>
+            <a href="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d593b617a707ef524a66.png" target="_blank"><img src="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d593b617a707ef524a66.png" alt="Close-up of technician detaching solar panel from tile roof" width="1024" height="1024" loading="lazy" decoding="async"></a>
+            <a href="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d582b617a7abb6524809.png" target="_blank"><img src="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d582b617a7abb6524809.png" alt="Large commercial solar array with crew working on installation" width="1024" height="1024" loading="lazy" decoding="async"></a>
+            <a href="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d582753f156584734be2.png" target="_blank"><img src="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d582753f156584734be2.png" alt="Two team members working together on solar panel reset" width="1024" height="1024" loading="lazy" decoding="async"></a>
+            <a href="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d582b617a743fb524808.png" target="_blank"><img src="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4d582b617a743fb524808.png" alt="Solar professional consulting with client on commercial rooftop" width="1024" height="1024" loading="lazy" decoding="async"></a>
         </div>
     </div>
 </section>
@@ -1060,10 +1068,19 @@
     <div class="container">
         <div class="partners-inner">
             <h2>Partners &amp; Associations</h2>
-            <div class="partners-logos">
-                <img src="https://solardetachpro.com/wp-content/uploads/2023/07/Vet-Discount-1.jpeg" alt="Veteran Discount Program" width="200" height="72" loading="lazy" decoding="async">
-                <img src="https://solardetachpro.com/wp-content/uploads/2023/07/Discount-1.png" alt="First Responder Discount" width="200" height="72" loading="lazy" decoding="async">
-                <img src="https://solardetachpro.com/wp-content/uploads/2023/08/image-arcalogo-2020-01.jpg" alt="Arizona Roofing Contractors Association Member" width="200" height="72" loading="lazy" decoding="async">
+            <div class="partners-badges">
+                <div class="partner-badge">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    Veteran Discount Program
+                </div>
+                <div class="partner-badge">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    First Responder Discount
+                </div>
+                <div class="partner-badge">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    Arizona Roofing Contractors Association
+                </div>
             </div>
         </div>
     </div>
@@ -1130,7 +1147,7 @@
     <div class="container">
         <div class="footer-grid">
             <div class="footer-brand">
-                <img src="https://solardetachpro.com/wp-content/uploads/2020/09/DetachResetLogoWHITEoutline.png" alt="Solar Detach & Reset" width="160" height="124" loading="lazy" decoding="async">
+                <img src="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4da1495735c5df5478fa9.png" alt="Solar Detach & Reset" width="56" height="56" loading="lazy" decoding="async">
                 <p>Phoenix's trusted specialists for safely removing and reinstalling solar panels during roof replacements. Licensed, insured, and committed to excellence.</p>
                 <p style="font-size:12px; color:rgba(255,255,255,0.35);">ROC #331356 &bull; Solar Detach Pro LLC</p>
             </div>
@@ -1186,7 +1203,7 @@
         document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
     }
 
-    // Header scroll effect — PERF: use passive listener + requestAnimationFrame
+    // Header scroll effect
     var headerEl = document.getElementById('site-header');
     var ticking = false;
     window.addEventListener('scroll', function() {
@@ -1256,9 +1273,8 @@
     });
 </script>
 
-<!-- PERF: Analytics/Pixels deferred — load AFTER page is interactive -->
+<!-- PERF: Analytics/Pixels deferred -->
 <script>
-    // Delay third-party scripts until after first user interaction or 3 seconds
     var thirdPartyLoaded = false;
     function loadThirdParty() {
         if (thirdPartyLoaded) return;
@@ -1288,7 +1304,6 @@
         fbq('track','PageView');
     }
 
-    // Load on first interaction or after 3 seconds — whichever comes first
     ['scroll','click','touchstart','keydown'].forEach(function(evt) {
         window.addEventListener(evt, loadThirdParty, {once:true, passive:true});
     });
