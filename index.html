@@ -466,6 +466,9 @@
         }
         .sms-consent-text { font-size: 11px; line-height: 1.6; color: var(--gray-500); }
 
+        /* Anti-spam honeypot — invisible to humans, filled by bots */
+        .form-hp { position: absolute; left: -9999px; top: -9999px; opacity: 0; height: 0; width: 0; z-index: -1; }
+
         .form-submit {
             width: 100%;
             padding: 16px;
@@ -907,6 +910,11 @@
                             I also agree to receive promotional SMS text messages from <strong style="color:var(--charcoal);">Solar Restore LLC DBA Solar Detach Reset</strong>, including special offers and company updates. Message frequency: up to 4 messages per month. Message and data rates may apply. Reply STOP to cancel.
                         </label>
                     </div>
+                    <!-- Anti-spam honeypot — do not remove -->
+                    <div class="form-hp" aria-hidden="true">
+                        <label for="website">Website</label>
+                        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                    </div>
                     <button type="submit" class="form-submit">Get My Free Estimate →</button>
                 </form>
             </div>
@@ -1135,6 +1143,11 @@
                             I also agree to receive promotional SMS text messages from <strong style="color:var(--charcoal);">Solar Restore LLC DBA Solar Detach Reset</strong>, including special offers and company updates. Message frequency: up to 4 messages per month. Message and data rates may apply. Reply STOP to cancel.
                         </label>
                     </div>
+                    <!-- Anti-spam honeypot — do not remove -->
+                    <div class="form-hp" aria-hidden="true">
+                        <label for="cta-website">Website</label>
+                        <input type="text" id="cta-website" name="website" tabindex="-1" autocomplete="off">
+                    </div>
                     <button type="submit" class="form-submit">Send Message →</button>
                 </form>
             </div>
@@ -1243,14 +1256,35 @@
         });
     });
 
-    // AJAX Form Submission
+    // Anti-spam: record when each form loaded
+    var formLoadTime = Date.now();
+
+    // AJAX Form Submission with bot protection
     document.querySelectorAll('#leadForm, #ctaForm').forEach(function(form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
+
+            // Bot check 1: honeypot field should be empty
+            var honeypot = form.querySelector('input[name="website"]');
+            if (honeypot && honeypot.value !== '') {
+                // Silently reject — show fake success so bot thinks it worked
+                showSuccess();
+                return;
+            }
+
+            // Bot check 2: reject if submitted in under 3 seconds
+            if (Date.now() - formLoadTime < 3000) {
+                showSuccess();
+                return;
+            }
+
             var btn = form.querySelector('.form-submit');
             btn.textContent = 'Sending...';
             btn.disabled = true;
             btn.style.opacity = '0.7';
+
+            // Remove honeypot field before sending so it doesn't hit your webhook
+            if (honeypot) honeypot.removeAttribute('name');
 
             fetch(form.action, {method:'POST', body: new FormData(form), mode:'no-cors'})
             .then(showSuccess).catch(showSuccess);
