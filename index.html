@@ -1314,7 +1314,7 @@
         if (thirdPartyLoaded) return;
         thirdPartyLoaded = true;
 
-        // Google Analytics
+        // Google Analytics (GA4)
         var gs = document.createElement('script');
         gs.src = 'https://www.googletagmanager.com/gtag/js?id=G-BQP8WZLMQG';
         gs.async = true;
@@ -1325,7 +1325,14 @@
             window.gtag = gtag;
             gtag('js', new Date());
             gtag('config', 'G-BQP8WZLMQG');
+            gtag('config', 'AW-493665667');
         };
+
+        // Google Ads tag (AW-493665667) — shares gtag.js loaded above
+        var gads = document.createElement('script');
+        gads.src = 'https://www.googletagmanager.com/gtag/js?id=AW-493665667';
+        gads.async = true;
+        document.head.appendChild(gads);
 
         // Facebook Pixel
         !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
