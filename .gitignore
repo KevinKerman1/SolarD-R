@@ -1,0 +1,16 @@
+# Browser automation artifacts
+.playwright-mcp/
+
+# Screenshots
+*.png
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+*.swp
+*.swo
+
+# Node
+node_modules/
