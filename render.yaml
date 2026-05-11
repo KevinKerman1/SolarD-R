@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: solardetachpro-lead-proxy
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: RECAPTCHA_SECRET
+        sync: false
+      - key: GHL_WEBHOOK_URL
+        sync: false
+      - key: MIN_SCORE
+        value: "0.5"
+      - key: ALLOWED_ORIGIN
+        value: "https://solardetachpro.com,https://www.solardetachpro.com"

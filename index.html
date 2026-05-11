@@ -198,7 +198,7 @@
     </div>
     <div class="hero-form-card" id="contact">
         <h3 class="form-title">Request Your Free Estimate</h3><p class="form-subtitle">We typically respond within 1 business hour.</p>
-        <form id="leadForm" action="https://services.leadconnectorhq.com/hooks/8uDfZwEms36rykE5axKL/webhook-trigger/4d2a4a76-ee23-4cc1-8fb9-660a88be5016" method="POST">
+        <form id="leadForm" action="https://solardetachpro-lead-proxy.onrender.com/api/lead" method="POST">
             <div class="form-row"><div class="form-group"><label for="name">Name *</label><input type="text" id="name" name="name" placeholder="Your full name" required></div><div class="form-group"><label for="phone">Phone *</label><input type="tel" id="phone" name="phone" placeholder="(555) 555-5555" required></div></div>
             <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="you@email.com"></div>
             <div class="form-group"><label for="service">Service Needed *</label><select id="service" name="service" required><option value="">Select a service...</option><option value="Solar Detach & Reset">Solar Detach &amp; Reset</option><option value="Solar Inspection">Solar Inspection</option><option value="Solar Bird Guard">Solar Bird Guard</option><option value="Other">Other / Not Sure</option></select></div>
@@ -338,7 +338,7 @@
         </div>
     </div>
     <div class="cta-form-card"><h3 class="form-title">Send Us a Message</h3><p class="form-subtitle">We'll get back to you within 1 business hour.</p>
-        <form id="ctaForm" action="https://services.leadconnectorhq.com/hooks/8uDfZwEms36rykE5axKL/webhook-trigger/4d2a4a76-ee23-4cc1-8fb9-660a88be5016" method="POST">
+        <form id="ctaForm" action="https://solardetachpro-lead-proxy.onrender.com/api/lead" method="POST">
             <div class="form-row"><div class="form-group"><label for="cta-name">Name *</label><input type="text" id="cta-name" name="name" placeholder="Your full name" required></div><div class="form-group"><label for="cta-phone">Phone *</label><input type="tel" id="cta-phone" name="phone" placeholder="(555) 555-5555" required></div></div>
             <div class="form-group"><label for="cta-email">Email</label><input type="email" id="cta-email" name="email" placeholder="you@email.com"></div>
             <div class="form-group"><label for="cta-service">Service Needed *</label><select id="cta-service" name="service" required><option value="">Select a service...</option><option value="Solar Detach & Reset">Solar Detach &amp; Reset</option><option value="Solar Inspection">Solar Inspection</option><option value="Solar Bird Guard">Solar Bird Guard</option><option value="Other">Other / Not Sure</option></select></div>
@@ -376,6 +376,14 @@ document.querySelectorAll('input[type="tel"]').forEach(function(i){i.addEventLis
 var formLoadTime=Date.now();
 var RECAPTCHA_SITE_KEY='6Le4i4wsAAAAAOG4Ebu3E7mWoye8GFqvzz-CZ6wW';
 
+function showFormError(form,msg){
+    var btn=form.querySelector('.form-submit');
+    btn.textContent='Try Again';btn.disabled=false;btn.style.opacity='1';
+    var err=form.querySelector('.form-error');
+    if(!err){err=document.createElement('p');err.className='form-error';err.style.cssText='color:#c0392b;font-size:13px;margin-top:10px;text-align:center;';form.appendChild(err);}
+    err.textContent=msg||'Could not submit. Please try again or call (480) 270-2745.';
+}
+
 document.querySelectorAll('#leadForm, #ctaForm').forEach(function(form){
     form.addEventListener('submit',function(e){
         e.preventDefault();
@@ -385,30 +393,26 @@ document.querySelectorAll('#leadForm, #ctaForm').forEach(function(form){
 
         var btn=form.querySelector('.form-submit');
         btn.textContent='Sending...';btn.disabled=true;btn.style.opacity='0.7';
-        if(honeypot)honeypot.removeAttribute('name');
 
-        // Get reCAPTCHA v3 token, then submit
-        if(typeof grecaptcha!=='undefined'){
-            grecaptcha.ready(function(){
-                grecaptcha.execute(RECAPTCHA_SITE_KEY,{action:'submit'}).then(function(token){
-                    // Set token on the hidden field inside THIS form
-                    form.querySelector('.recaptcha-token-field').value=token;
-                    doSubmit();
-                }).catch(function(){
-                    // If reCAPTCHA fails, still submit (don't block real users)
-                    doSubmit();
-                });
-            });
-        }else{
-            // reCAPTCHA not loaded yet — submit anyway
-            doSubmit();
+        function submitWithToken(token){
+            var data={};
+            new FormData(form).forEach(function(v,k){data[k]=v;});
+            data.recaptcha_token=token;
+            data.form_loaded_at=formLoadTime;
+            fetch(form.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+            .then(function(r){
+                if(r.ok){window.location.href='/thank-you';}
+                else{showFormError(form,r.status===403?'Verification failed. Please try again.':null);}
+            })
+            .catch(function(){showFormError(form);});
         }
 
-        function doSubmit(){
-            fetch(form.action,{method:'POST',body:new FormData(form),mode:'no-cors'})
-            .then(function(){window.location.href='/thank-you';})
-            .catch(function(){window.location.href='/thank-you';});
-        }
+        if(typeof grecaptcha==='undefined'){showFormError(form,'Security check failed to load. Please refresh and try again.');return;}
+        grecaptcha.ready(function(){
+            grecaptcha.execute(RECAPTCHA_SITE_KEY,{action:'submit'})
+                .then(submitWithToken)
+                .catch(function(){showFormError(form,'Security check failed. Please refresh and try again.');});
+        });
     });
 });
 </script>
