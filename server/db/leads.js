@@ -4,9 +4,10 @@ const connStr = process.env.DATABASE_URL_LEADS;
 
 let pool = null;
 if (connStr) {
+  const usesPrivateNet = /localhost|\.flycast|\.internal|sslmode=disable/.test(connStr);
   pool = new Pool({
     connectionString: connStr,
-    ssl: connStr.includes('localhost') ? false : { rejectUnauthorized: false },
+    ssl: usesPrivateNet ? false : { rejectUnauthorized: false },
     max: 5,
     idleTimeoutMillis: 30_000,
   });
