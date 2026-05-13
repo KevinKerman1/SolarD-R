@@ -1,1 +1,0 @@
-# SolarD-R
