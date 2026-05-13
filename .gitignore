@@ -14,3 +14,11 @@
 
 # Node
 node_modules/
+
+# Env files
+.env
+.env.local
+.env.production
+
+# Local agent state
+.claude/

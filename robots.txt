@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block obvious non-content paths
+Disallow: /api/
+Disallow: /healthz
+
+Sitemap: https://solardetachpro.com/sitemap.xml

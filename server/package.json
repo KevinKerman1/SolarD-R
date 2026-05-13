@@ -1,11 +1,17 @@
 {
-  "name": "solardetachpro-lead-proxy",
-  "version": "1.0.0",
+  "name": "solardetachpro-web",
+  "version": "2.0.0",
   "private": true,
-  "description": "reCAPTCHA verification proxy in front of GoHighLevel webhook",
+  "description": "SolarDetachPro web service: static site + lead capture (reCAPTCHA + Postgres mirror + GHL forward) + analytics events.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "migrate": "node migrate.js",
+    "postinstall": "node -e \"console.log('SDP web service installed')\""
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "pg": "^8.13.1"
   },
   "engines": {
     "node": ">=18"

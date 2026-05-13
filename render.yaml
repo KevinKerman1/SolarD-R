@@ -1,19 +1,48 @@
 services:
   - type: web
-    name: solardetachpro-lead-proxy
+    name: solardetachpro-web
     runtime: node
     rootDir: server
-    plan: free
+    plan: starter
+    region: oregon
     buildCommand: npm install
     startCommand: npm start
+    preDeployCommand: npm run migrate
     healthCheckPath: /healthz
     autoDeploy: true
     envVars:
-      - key: RECAPTCHA_SECRET
-        sync: false
+      - key: NODE_ENV
+        value: production
       - key: GHL_WEBHOOK_URL
-        sync: false
-      - key: MIN_SCORE
-        value: "0.5"
+        sync: false        # set manually in dashboard — same value as old lead-proxy service
+      - key: RECAPTCHA_SECRET
+        sync: false        # optional now; in-app spam filter is primary defense
       - key: ALLOWED_ORIGIN
         value: "https://solardetachpro.com,https://www.solardetachpro.com"
+      - key: IP_SALT
+        generateValue: true
+      - key: MIN_RECAPTCHA_SCORE
+        value: "0.3"
+      - key: RATE_LIMIT_PER_MIN
+        value: "5"
+      - key: DATABASE_URL_LEADS
+        fromDatabase:
+          name: solardetachpro-leads
+          property: connectionString
+      - key: DATABASE_URL_ANALYTICS
+        fromDatabase:
+          name: solardetachpro-analytics
+          property: connectionString
+
+databases:
+  - name: solardetachpro-leads
+    plan: basic-256mb        # cheapest paid tier; free Postgres on Render expires after 90 days
+    region: oregon
+    databaseName: leads
+    user: leads_app
+
+  - name: solardetachpro-analytics
+    plan: basic-256mb
+    region: oregon
+    databaseName: analytics
+    user: analytics_app

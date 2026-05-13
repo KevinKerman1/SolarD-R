@@ -333,6 +333,7 @@
             .trust-items{gap:24px}
         }
     </style>
+    <script defer src="/assets/track.js"></script>
 </head>
 <body>
 
@@ -376,11 +377,16 @@
     <a href="#faq" onclick="toggleMobileNav()">FAQ</a>
     <a href="#contact" onclick="toggleMobileNav()">Contact</a>
     <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);">
-        <p style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);font-family:var(--font-heading);font-weight:700;margin-bottom:10px;">Service Areas</p>
+                <p style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);font-family:var(--font-heading);font-weight:700;margin-bottom:10px;">Service Areas</p>
         <a href="/" style="color:rgba(255,255,255,.6);padding:8px 0;">Phoenix</a>
         <a href="/scottsdale" style="color:rgba(255,255,255,.6);padding:8px 0;">Scottsdale</a>
+        <a href="/mesa" style="color:rgba(255,255,255,.6);padding:8px 0;">Mesa</a>
+        <a href="/chandler" style="color:rgba(255,255,255,.6);padding:8px 0;">Chandler</a>
+        <a href="/tempe" style="color:rgba(255,255,255,.6);padding:8px 0;">Tempe</a>
+        <a href="/glendale" style="color:rgba(255,255,255,.6);padding:8px 0;">Glendale</a>
         <a href="/tucson" style="color:rgba(255,255,255,.6);padding:8px 0;">Tucson</a>
         <a href="/flagstaff" style="color:var(--orange);padding:8px 0;">Flagstaff</a>
+        <a href="/roofers" style="color:rgba(255,255,255,.6);padding:8px 0;">For Roofers</a>
     </div>
     <a href="tel:4802702745" style="color:var(--orange);margin-top:20px;font-family:var(--font-heading);font-weight:700;">(480) 270-2745</a>
 </nav>
@@ -431,7 +437,7 @@
             <div class="hero-form-card" id="contact">
                 <h3 class="form-title">Get a Free Flagstaff Estimate</h3>
                 <p class="form-subtitle">We typically respond within 1 business hour.</p>
-                <form id="heroLeadForm" action="https://solardetachpro-lead-proxy.onrender.com/api/lead" method="POST">
+                <form id="heroLeadForm" action="/api/lead" method="POST">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="hero-name">Name *</label>
@@ -794,7 +800,7 @@
             <div class="cta-form-card">
                 <h3 class="form-title">Request Your Free Estimate</h3>
                 <p class="form-subtitle">We respond within 1 business hour.</p>
-                <form id="ctaLeadForm" action="https://solardetachpro-lead-proxy.onrender.com/api/lead" method="POST">
+                <form id="ctaLeadForm" action="/api/lead" method="POST">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="cta-name">Name *</label>
@@ -855,8 +861,13 @@
                 <ul class="footer-links">
                     <li><a href="/">Phoenix</a></li>
                     <li><a href="/scottsdale">Scottsdale</a></li>
+                    <li><a href="/mesa">Mesa</a></li>
+                    <li><a href="/chandler">Chandler</a></li>
+                    <li><a href="/tempe">Tempe</a></li>
+                    <li><a href="/glendale">Glendale</a></li>
                     <li><a href="/tucson">Tucson</a></li>
                     <li><a href="/flagstaff">Flagstaff</a></li>
+                    <li><a href="/roofers">For Roofers</a></li>
                 </ul>
             </div>
             <div>

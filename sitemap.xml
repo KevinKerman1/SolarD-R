@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://solardetachpro.com/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- City pages -->
+  <url><loc>https://solardetachpro.com/scottsdale</loc><lastmod>2026-05-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://solardetachpro.com/tucson</loc><lastmod>2026-05-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://solardetachpro.com/flagstaff</loc><lastmod>2026-05-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://solardetachpro.com/mesa</loc><lastmod>2026-05-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://solardetachpro.com/chandler</loc><lastmod>2026-05-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://solardetachpro.com/tempe</loc><lastmod>2026-05-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://solardetachpro.com/glendale</loc><lastmod>2026-05-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- Service pages -->
+  <url><loc>https://solardetachpro.com/services/removal-only</loc><lastmod>2026-05-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://solardetachpro.com/services/insurance-claim</loc><lastmod>2026-05-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://solardetachpro.com/services/panel-relocation</loc><lastmod>2026-05-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://solardetachpro.com/services/roof-replacement</loc><lastmod>2026-05-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- B2B -->
+  <url><loc>https://solardetachpro.com/roofers</loc><lastmod>2026-05-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Trust / legal -->
+  <url><loc>https://solardetachpro.com/press-kit</loc><lastmod>2026-05-13</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://solardetachpro.com/privacy-policy</loc><lastmod>2026-05-13</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://solardetachpro.com/terms</loc><lastmod>2026-05-13</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
+</urlset>

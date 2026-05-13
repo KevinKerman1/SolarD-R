@@ -165,6 +165,7 @@
         @media(max-width:1024px){.hero-grid{grid-template-columns:1fr;gap:40px}.hero-form-card{max-width:500px}.about-grid{grid-template-columns:1fr;gap:40px}.cta-inner{grid-template-columns:1fr;gap:40px}.cta-form-card{max-width:500px}.footer-grid{grid-template-columns:1fr 1fr}.process-steps{grid-template-columns:1fr 1fr}}
         @media(max-width:768px){.nav-links{display:none}.header-phone .phone-text{display:none}.mobile-toggle{display:flex}.floating-cta{display:flex}body{padding-bottom:72px}.hero{min-height:auto}.hero-grid{padding:120px 0 80px}.hero h1{font-size:2rem}.hero-stats{gap:24px}.hero-stat strong{font-size:24px}.services-grid{grid-template-columns:1fr}.reviews-grid{grid-template-columns:1fr}.process-steps{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.section-pad{padding:60px 0}.section-pad-lg{padding:60px 0}.about-image-accent{display:none}}
     </style>
+    <script defer src="/assets/track.js"></script>
 </head>
 <body>
 
@@ -187,10 +188,16 @@
     <a href="#contact" onclick="toggleMobileNav()">Free Estimate</a>
     <a href="#faq" onclick="toggleMobileNav()">FAQ</a>
     <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.08);">
-        <p style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);font-family:var(--font-heading);font-weight:700;margin-bottom:10px;">Service Areas</p>
+                <p style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);font-family:var(--font-heading);font-weight:700;margin-bottom:10px;">Service Areas</p>
         <a href="/" style="color:rgba(255,255,255,.6);padding:8px 0;">Phoenix</a>
         <a href="/scottsdale" style="color:rgba(255,255,255,.6);padding:8px 0;">Scottsdale</a>
+        <a href="/mesa" style="color:rgba(255,255,255,.6);padding:8px 0;">Mesa</a>
+        <a href="/chandler" style="color:rgba(255,255,255,.6);padding:8px 0;">Chandler</a>
+        <a href="/tempe" style="color:rgba(255,255,255,.6);padding:8px 0;">Tempe</a>
+        <a href="/glendale" style="color:rgba(255,255,255,.6);padding:8px 0;">Glendale</a>
+        <a href="/tucson" style="color:var(--orange);padding:8px 0;">Tucson</a>
         <a href="/flagstaff" style="color:rgba(255,255,255,.6);padding:8px 0;">Flagstaff</a>
+        <a href="/roofers" style="color:rgba(255,255,255,.6);padding:8px 0;">For Roofers</a>
     </div>
     <a href="tel:4802702745" style="color:var(--orange);margin-top:20px;">(480) 270-2745</a>
 </div>
@@ -213,7 +220,7 @@
     </div>
     <div class="hero-form-card" id="contact">
         <h3 class="form-title">Request Your Free Estimate</h3><p class="form-subtitle">Serving Tucson &amp; Southern Arizona. Typically respond within 1 business hour.</p>
-        <form id="leadForm" action="https://solardetachpro-lead-proxy.onrender.com/api/lead" method="POST">
+        <form id="leadForm" action="/api/lead" method="POST">
             <div class="form-row">
                 <div class="form-group"><label for="name">Name *</label><input type="text" id="name" name="name" placeholder="Your full name" required></div>
                 <div class="form-group"><label for="phone">Phone *</label><input type="tel" id="phone" name="phone" placeholder="(555) 555-5555" required></div>
@@ -332,7 +339,7 @@
         </div>
     </div>
     <div class="cta-form-card"><h3 class="form-title">Send Us a Message</h3><p class="form-subtitle">We'll get back to you within 1 business hour.</p>
-        <form id="ctaForm" action="https://solardetachpro-lead-proxy.onrender.com/api/lead" method="POST">
+        <form id="ctaForm" action="/api/lead" method="POST">
             <div class="form-row">
                 <div class="form-group"><label for="cta-name">Name *</label><input type="text" id="cta-name" name="name" placeholder="Your full name" required></div>
                 <div class="form-group"><label for="cta-phone">Phone *</label><input type="tel" id="cta-phone" name="phone" placeholder="(555) 555-5555" required></div>
@@ -355,7 +362,17 @@
     <div class="footer-grid">
         <div class="footer-brand"><img src="https://assets.cdn.filesafe.space/8uDfZwEms36rykE5axKL/media/69a4da1495735c5df5478fa9.png" alt="Solar Detach &amp; Reset" width="56" height="56" loading="lazy" decoding="async"><p>Arizona's trusted specialists for safely removing and reinstalling solar panels during roof replacements. Licensed, insured, and committed to excellence across Tucson and Southern Arizona.</p><p style="font-size:12px;color:rgba(255,255,255,.35);">ROC #331356 &bull; Solar Detach Pro LLC</p></div>
         <div><h4 class="footer-heading">Quick Links</h4><ul class="footer-links"><li><a href="/#about">About Us</a></li><li><a href="/#services">Services</a></li><li><a href="/#reviews">Reviews</a></li><li><a href="#contact">Free Estimate</a></li><li><a href="#faq">FAQ</a></li></ul></div>
-        <div><h4 class="footer-heading">Services</h4><ul class="footer-links"><li><a href="#services">Solar Detach &amp; Reset</a></li><li><a href="#services">Solar Panel Inspection</a></li><li><a href="#services">Solar Bird Guard</a></li></ul><h4 class="footer-heading" style="margin-top:28px;">Service Areas</h4><ul class="footer-links"><li><a href="/">Phoenix</a></li><li><a href="/scottsdale">Scottsdale</a></li><li><a href="/tucson">Tucson</a></li><li><a href="/flagstaff">Flagstaff</a></li></ul></div>
+        <div><h4 class="footer-heading">Services</h4><ul class="footer-links"><li><a href="#services">Solar Detach &amp; Reset</a></li><li><a href="#services">Solar Panel Inspection</a></li><li><a href="#services">Solar Bird Guard</a></li></ul><h4 class="footer-heading" style="margin-top:28px;">Service Areas</h4>            <ul class="footer-links">
+                <li><a href="/">Phoenix</a></li>
+                <li><a href="/scottsdale">Scottsdale</a></li>
+                <li><a href="/mesa">Mesa</a></li>
+                <li><a href="/chandler">Chandler</a></li>
+                <li><a href="/tempe">Tempe</a></li>
+                <li><a href="/glendale">Glendale</a></li>
+                <li><a href="/tucson">Tucson</a></li>
+                <li><a href="/flagstaff">Flagstaff</a></li>
+                <li><a href="/roofers">For Roofers</a></li>
+            </ul></div>
         <div><h4 class="footer-heading">Contact</h4><div class="footer-contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:4802702745" style="color:rgba(255,255,255,.7);">(480) 270-2745</a></div><div class="footer-contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:Service@solardetachpro.com" style="color:rgba(255,255,255,.7);">Service@solardetachpro.com</a></div><div class="footer-contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span style="color:rgba(255,255,255,.7);">515 E Carefree Hwy<br>Phoenix, AZ</span></div></div>
     </div>
     <div class="footer-bottom"><span>&copy; 2025 Solar Detach &amp; Reset (Solar Detach Pro LLC). All rights reserved.</span><span><a href="/privacy-policy">Privacy Policy</a> &bull; <a href="/terms">Terms of Service</a></span></div>

@@ -1,0 +1,14 @@
+{
+  "name": "solardetachpro",
+  "version": "2.0.0",
+  "private": true,
+  "description": "SolarDetachPro web service + static site. Express app lives in server/. Root package.json exists so Nixpacks detects Node.",
+  "scripts": {
+    "build": "cd server && npm install",
+    "start": "cd server && npm run migrate && node index.js",
+    "migrate": "cd server && npm run migrate"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
