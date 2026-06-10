@@ -181,6 +181,7 @@
     <nav><ul class="nav-links"><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#process">Process</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#contact">Contact</a></li></ul></nav>
     <div class="header-cta">
         <a href="tel:4802702745" class="header-phone"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span class="phone-text">(480) 270-2745</span></a>
+        <!--Start of Housecall Pro Customer Portal button--> <button data-token='7f6d17bc59924bb5857aba120b7d34ab' data-orgname='Solar-Detach--Reset' onClick="window.open('https://client.housecallpro.com/customer_portal/request-link?token=7f6d17bc59924bb5857aba120b7d34ab', '_blank')" style='background-color: #0f77cc; border: 0; border-radius: 100px; color: #fff; cursor: pointer; padding: 12px 24px;'> LOG IN TO PORTAL </button> <!--End of Housecall Pro Customer Portal button-->
         <a href="#contact" class="btn btn-primary" style="padding:12px 24px;font-size:13px;">Free Estimate</a>
         <button class="mobile-toggle" onclick="toggleMobileNav()" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
@@ -209,7 +210,12 @@
     </div>
     <div class="hero-form-card" id="contact">
         <h3 class="form-title">Request Your Free Estimate</h3><p class="form-subtitle">We typically respond within 1 business hour.</p>
-        <form id="leadForm" action="/api/lead" method="POST">
+        <!--Start of Housecallpro Lead Capture code-->
+<script async src="https://online-booking.housecallpro.com/script.js?token=dd3cb1faaec14ef2a0d2bdf4c6f5d369&orgName=Solar-Detach--Reset"></script>
+<iframe style="border:none;width:100%;min-height:680px;display:block;" id="hcp-lead-iframe" title="Request a Free Estimate from Solar Detach and Reset" src="https://book.housecallpro.com/lead-form/Solar-Detach--Reset/dd3cb1faaec14ef2a0d2bdf4c6f5d369"></iframe>
+<!--End of Housecallpro Lead Capture code-->
+<!-- LEGACY LEAD FORM disabled on 2026-06-10 for the Housecall Pro embed. Kept for easy rollback. To restore: delete the Housecall block directly above, then remove this opening comment marker and the closing comment marker at the end of this form.
+<form id="leadForm" action="/api/lead" method="POST">
             <div class="form-row"><div class="form-group"><label for="name">Name *</label><input type="text" id="name" name="name" placeholder="Your full name" required></div><div class="form-group"><label for="phone">Phone *</label><input type="tel" id="phone" name="phone" placeholder="(555) 555-5555" required></div></div>
             <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" placeholder="you@email.com"></div>
             <div class="form-group"><label for="service">Service Needed *</label><select id="service" name="service" required><option value="">Select a service...</option><option value="Solar Detach & Reset">Solar Detach &amp; Reset</option><option value="Solar Inspection">Solar Inspection</option><option value="Solar Bird Guard">Solar Bird Guard</option><option value="Other">Other / Not Sure</option></select></div>
@@ -221,6 +227,7 @@
             <button type="submit" class="form-submit">Get My Free Estimate →</button>
             <p class="recaptcha-notice">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms of Service</a> apply.</p>
         </form>
+-->
     </div>
 </div></div></section>
 
@@ -349,7 +356,11 @@
         </div>
     </div>
     <div class="cta-form-card"><h3 class="form-title">Send Us a Message</h3><p class="form-subtitle">We'll get back to you within 1 business hour.</p>
-        <form id="ctaForm" action="/api/lead" method="POST">
+        <!--Start of Housecallpro Lead Capture code-->
+<iframe style="border:none;width:100%;min-height:680px;display:block;" id="hcp-lead-iframe-2" title="Request a Free Estimate from Solar Detach and Reset" src="https://book.housecallpro.com/lead-form/Solar-Detach--Reset/dd3cb1faaec14ef2a0d2bdf4c6f5d369"></iframe>
+<!--End of Housecallpro Lead Capture code-->
+<!-- LEGACY LEAD FORM disabled on 2026-06-10 for the Housecall Pro embed. Kept for easy rollback. To restore: delete the Housecall block directly above, then remove this opening comment marker and the closing comment marker at the end of this form.
+<form id="ctaForm" action="/api/lead" method="POST">
             <div class="form-row"><div class="form-group"><label for="cta-name">Name *</label><input type="text" id="cta-name" name="name" placeholder="Your full name" required></div><div class="form-group"><label for="cta-phone">Phone *</label><input type="tel" id="cta-phone" name="phone" placeholder="(555) 555-5555" required></div></div>
             <div class="form-group"><label for="cta-email">Email</label><input type="email" id="cta-email" name="email" placeholder="you@email.com"></div>
             <div class="form-group"><label for="cta-service">Service Needed *</label><select id="cta-service" name="service" required><option value="">Select a service...</option><option value="Solar Detach & Reset">Solar Detach &amp; Reset</option><option value="Solar Inspection">Solar Inspection</option><option value="Solar Bird Guard">Solar Bird Guard</option><option value="Other">Other / Not Sure</option></select></div>
@@ -361,6 +372,7 @@
             <button type="submit" class="form-submit">Send Message →</button>
             <p class="recaptcha-notice">This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms of Service</a> apply.</p>
         </form>
+-->
     </div>
 </div></div></section>
 
